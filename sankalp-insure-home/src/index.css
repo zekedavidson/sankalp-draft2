@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background: #f1f1f1 */
+    --background: 0 0% 95%;
+    /* Text: #212529 (Almost Black) */
+    --foreground: 210 11% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 15%;
+
+    /* Primary Action: #4A3B52 (Deep Plum) */
+    --primary: 279 16% 28%;
+    --primary-foreground: 210 20% 98%;
+
+    /* Secondary Element: #9284A3 (Dusty Lilac) */
+    --secondary: 267 14% 58%;
+    --secondary-foreground: 210 11% 15%;
+
+    --muted: 210 20% 98%;
+    --muted-foreground: 210 11% 45%;
+
+    /* Accent/Highlight: Brightened Camel */
+    --accent: 31 65% 65%;
+    --accent-foreground: 210 11% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 279 16% 28%;
+
+    --radius: 0.5rem;
+
+    /* Semantic alias for Deep Plum (Primary) */
+    --navy: 279 16% 28%;
+    --navy-light: 279 14% 38%;
+    /* Semantic alias for Camel (Accent) */
+    --gold: 31 65% 65%;
+    --gold-light: 31 70% 75%;
+    --gold-dark: 31 60% 50%;
+
+    --sidebar-background: 279 16% 28%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 31 65% 65%;
+    --sidebar-primary-foreground: 279 16% 28%;
+    --sidebar-accent: 279 14% 38%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 279 20% 20%;
+    --sidebar-ring: 31 65% 65%;
+  }
+
+  .dark {
+    /* Background: #212529 (inverted off-white) */
+    --background: 210 11% 15%;
+    /* Text: #F8F9FA (inverted almost black) */
+    --foreground: 210 20% 98%;
+    --card: 210 11% 18%;
+    --card-foreground: 210 20% 98%;
+    --popover: 210 11% 18%;
+    --popover-foreground: 210 20% 98%;
+    /* Primary Action: #C29B70 or inverted Plum */
+    --primary: 279 16% 40%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 267 14% 45%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 210 11% 22%;
+    --muted-foreground: 210 11% 65%;
+    --accent: 31 65% 65%;
+    --accent-foreground: 210 11% 15%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 210 11% 25%;
+    --input: 210 11% 25%;
+    --ring: 279 16% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .bg-navy {
+    background-color: hsl(var(--navy));
+  }
+
+  .bg-navy-light {
+    background-color: hsl(var(--navy-light));
+  }
+
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .bg-gold-light {
+    background-color: hsl(var(--gold-light));
+  }
+
+  .text-navy {
+    color: hsl(var(--navy));
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .text-gold-dark {
+    color: hsl(var(--gold-dark));
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  .border-navy {
+    border-color: hsl(var(--navy));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--navy)) 0%, hsl(var(--navy-light)) 60%, hsl(220 45% 28%) 100%);
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)) 0%, hsl(var(--gold)) 100%);
+  }
+
+  .shadow-gold {
+    box-shadow: 0 4px 24px -4px hsl(var(--gold) / 0.3);
+  }
+
+  .shadow-navy {
+    box-shadow: 0 4px 24px -4px hsl(var(--navy) / 0.25);
+  }
+}
