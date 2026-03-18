@@ -145,4 +145,196 @@
   .shadow-navy {
     box-shadow: 0 4px 24px -4px hsl(var(--navy) / 0.25);
   }
+
+  /* ── Hero Card — prominent shadows + gradient border ring ── */
+  .hero-card {
+    background: hsl(var(--card));
+    border: 1.5px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 2px 6px hsla(var(--navy), 0.06),
+      0 8px 24px -4px hsla(var(--navy), 0.10),
+      0 20px 50px -8px hsla(var(--navy), 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hero-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+      135deg,
+      hsla(var(--gold), 0.35) 0%,
+      hsla(var(--primary), 0.2) 40%,
+      hsla(var(--gold), 0.35) 70%,
+      hsla(var(--primary), 0.15) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+  .hero-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow:
+      0 4px 8px hsla(var(--navy), 0.08),
+      0 16px 48px -6px hsla(var(--navy), 0.16),
+      0 32px 64px -12px hsla(var(--gold), 0.10);
+  }
+  .hero-card:hover::before {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--gold), 0.7) 0%,
+      hsla(var(--primary), 0.5) 40%,
+      hsla(var(--gold), 0.7) 70%,
+      hsla(var(--primary), 0.35) 100%
+    );
+  }
+
+  /* ── Life Insurance Feature Card — distinct dark background ── */
+  .life-card {
+    background: linear-gradient(
+      145deg,
+      hsl(var(--navy)) 0%,
+      hsl(var(--navy-light)) 50%,
+      hsl(279 18% 34%) 100%
+    );
+    color: hsl(var(--primary-foreground));
+    box-shadow:
+      0 4px 12px hsla(var(--navy), 0.2),
+      0 16px 48px -8px hsla(var(--navy), 0.25),
+      0 32px 64px -16px hsla(var(--navy), 0.15);
+  }
+  .life-card::before {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--gold), 0.5) 0%,
+      hsla(var(--gold), 0.2) 50%,
+      hsla(var(--gold), 0.5) 100%
+    );
+  }
+  .life-card:hover {
+    box-shadow:
+      0 6px 16px hsla(var(--navy), 0.25),
+      0 24px 56px -8px hsla(var(--navy), 0.3),
+      0 40px 80px -16px hsla(var(--gold), 0.12);
+  }
+  .life-card:hover::before {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--gold), 0.8) 0%,
+      hsla(var(--gold), 0.4) 50%,
+      hsla(var(--gold), 0.8) 100%
+    );
+  }
+
+  /* ── Animated Arrow ── */
+  .arrow-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .group:hover .arrow-btn {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-color: hsl(var(--primary));
+    transform: scale(1.15) rotate(-45deg);
+  }
+
+  /* ── Accent Strip Card (Products) ── */
+  .accent-strip-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--card));
+    transition: all 0.35s ease;
+  }
+  .accent-strip-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, hsl(var(--primary)) 0%, hsl(var(--gold)) 100%);
+    border-radius: 9999px 9999px 0 0;
+  }
+  .accent-strip-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow:
+      0 8px 30px -8px hsla(var(--navy), 0.15),
+      0 2px 8px -2px hsla(var(--navy), 0.08);
+    border-color: hsla(var(--gold), 0.4);
+  }
+
+  /* ── Floating Icon ── */
+  .floating-icon {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+    box-shadow: 0 2px 8px -2px hsla(var(--navy), 0.08);
+  }
+  .group:hover .floating-icon {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px -8px hsla(var(--gold), 0.25);
+  }
+
+  /* ── Testimonial Card ── */
+  .testimonial-card {
+    border-left: 3px solid hsl(var(--gold));
+    background: hsl(var(--card));
+    transition: all 0.35s ease;
+  }
+  .testimonial-card:hover {
+    border-left-color: hsl(var(--primary));
+    box-shadow: 0 8px 30px -8px hsla(var(--navy), 0.12);
+    transform: translateY(-3px);
+  }
+
+  /* ── CTA Animated Gradient ── */
+  .cta-animated {
+    background: linear-gradient(
+      -45deg,
+      hsl(var(--navy)) 0%,
+      hsl(var(--navy-light)) 25%,
+      hsl(279 18% 32%) 50%,
+      hsl(var(--navy)) 75%,
+      hsl(var(--navy-light)) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  /* ── Popular badge shimmer ── */
+  .shimmer-badge {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer-badge::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, hsla(0,0%,100%,0.35) 50%, transparent 100%);
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+}
+
+/* ── Keyframe Animations ── */
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }

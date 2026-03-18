@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Shield, Car, CheckCircle, Lock, CreditCard, Award, ArrowRight, Star, Users, FileText, Heart, TrendingUp, Baby, PiggyBank, GraduationCap, Umbrella, BarChart2, Bike, Plane } from "lucide-react";
+import { Shield, Car, CheckCircle, Lock, CreditCard, Award, ArrowRight, Star, Users, FileText, Heart, TrendingUp, Baby, PiggyBank, GraduationCap, Umbrella, BarChart2, Bike, Plane, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -51,7 +51,7 @@ const faqs: Record<string, { q: string; a: string }[]> = {
     { q: "Why should I buy car insurance?", a: "There are a number of benefits of owning four wheeler insurance. Firstly, it helps you meet the legal requirement of owning at least a third party cover. Moreover, an insurance policy helps you meet financial liabilities that may arise towards a third party or own damages to your car due to a road accident or any other unfortunate event." },
     { q: "Is car insurance mandatory in India?", a: "As per the Indian Motor Tariff, every car owner in the country is compulsorily required to own at least a third party cover. Absence of a valid plan is a punishable offence which attracts a fine of Rs. 2,000 and/or imprisonment of up to 3 months for the first offence." },
     { q: "How is car insurance premium calculated?", a: "The premium price of third-party car insurance plans is determined by the IRDAI, whereas the premium for standalone own-damage and comprehensive plans vary from insurance company to insurance company." },
-    { q: "Can car insurance be transferred to the new owner at the purchase of a second hand four wheeler?", a: "Yes, the four wheeler insurance can be transferred from the old owner to the new owner in case the sale of a second-hand car. As per the Indian Motor Tariff, the policy transfer should be completed within 14 days from the car’s purchase date." },
+    { q: "Can car insurance be transferred to the new owner at the purchase of a second hand four wheeler?", a: "Yes, the four wheeler insurance can be transferred from the old owner to the new owner in case the sale of a second-hand car. As per the Indian Motor Tariff, the policy transfer should be completed within 14 days from the car's purchase date." },
   ],
   "Bike": [
     { q: "What is a two wheeler insurance policy?", a: "A two wheeler insurance policy is an agreement between an insurance company and a bike owner wherein the insurance provider promises to cover any damage or loss sustained by the insured bike due to an accident, theft, fire, etc., based on the opted policy. Generally, the contract between insured and insurer is of a year which should be renewed every year." },
@@ -63,7 +63,7 @@ const faqs: Record<string, { q: string; a: string }[]> = {
   "Life": [
     { q: "What is Life Insurance ?", a: "Life insurance is an insurance cover which provides a sum assured to the family of the assured in the event of sudden death. The plan also offers a survival benefit to the assured if he/she survives the policy term." },
     { q: "What are the factors that affect the calculation of a life insurance plan premium?", a: "Life insurance premium depends on numerous factors including policyholder's age, sum assured, gender, lifestyle, job, medical history, type of policy, tenure, and riders (if any). " },
-    { q: "Why should I purchase life insurance?", a: "Life insurance helps you attain financial security that ensures your family’s life goals are not affected. Life insurance also offers tax benefits on the premiums that a policyholder pays for their life insurance. Moreover, life insurance plans are affordable and the policyholder can purchase additional benefits by purchasing a rider to enhance their life cover." },
+    { q: "Why should I purchase life insurance?", a: "Life insurance helps you attain financial security that ensures your family's life goals are not affected. Life insurance also offers tax benefits on the premiums that a policyholder pays for their life insurance. Moreover, life insurance plans are affordable and the policyholder can purchase additional benefits by purchasing a rider to enhance their life cover." },
     { q: "Which is the best life insurance plan?", a: "Different life insurance plans have different features and advantages. Thus, the definition of the best plan varies from individual to individual. The best life insurance plan is the one which best meets your requirements and budget. However, among all the different types of life insurance plans, the most preferred type of life insurance plan is Term Insurance Plan because it provides high coverage at nominal premium." },
     { q: "What are the factors which I should consider before buying a life insurance policy?", a: "There are many factors that you should consider while purchasing a life insurance plan. These includes your financial goals, income, existing liabilities, and daily expenses. After analysing all these factors, you can compare different types of life insurance plans like term plans, whole life insurance, child plans, retirement plans, and others to buy the one that suits your needs. " },
 
@@ -83,250 +83,245 @@ export default function HomePage() {
 
   return (
     <Layout>
-      {/* Hero Bento Grid */}
-      <section className="bg-background pt-8 pb-16 lg:pt-12 lg:pb-24">
+      {/* ═══════════════════ Hero Bento Grid ═══════════════════ */}
+      <section className="bg-background pt-4 pb-8 lg:pt-6 lg:pb-12">
         <div className="container mx-auto px-4 lg:px-8 max-w-[87.5rem]">
 
           {/* Main Headline */}
-          <div className="mb-6 lg:mb-8 flex flex-col items-center justify-center">
-            <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-navy mb-3">
+          <div className="mb-8 lg:mb-10 flex flex-col items-center justify-center">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold text-navy mb-2 tracking-tight">
               Protect What Matters Most
             </h1>
-            <p className="text-xl lg:text-2xl font-semibold text-gold-dark">
+            <p className="text-lg lg:text-xl font-semibold text-gold-dark tracking-wide">
               Insurance Made Simple
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
+          {/* ── Row 1: Life (wide) + Health ── */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6 mb-5 lg:mb-6">
 
-            {/* Left Card: Life Insurance (Spans 4 columns) */}
-            <Link to="/get-quote?type=life" className="col-span-1 lg:col-span-4 bg-primary/10 rounded-[2rem] p-6 lg:p-10 flex flex-col justify-between relative group shadow-md shadow-navy/5 hover:shadow-2xl hover:shadow-primary/15 hover:-translate-y-1 transition-all duration-300 border border-white/60 hover:border-primary/20 overflow-hidden min-h-[40vh] lg:min-h-[60vh]">
+            {/* Life Insurance — wide hero card with dark gradient */}
+            <Link
+              to="/get-quote?type=life"
+              className="col-span-1 lg:col-span-8 hero-card life-card rounded-3xl p-6 lg:p-7 flex flex-col justify-between relative group min-h-[200px] lg:min-h-[220px]"
+            >
               <div className="z-10 relative">
-                <h2 className="text-2xl lg:text-[2.2rem] font-bold text-navy mb-3 leading-tight">Protect your family with our<br />100% pure life insurance</h2>
-                <p className="text-sm lg:text-base text-navy/70 mb-6">Not mixed with any returns or jargons</p>
-                <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-semibold">
-                  <span className="bg-background rounded-full p-0.5 flex items-center justify-center"><CheckCircle className="w-3.5 h-3.5" /></span>
+                <div className="inline-flex items-center gap-1.5 bg-white/10 text-gold-light px-3 py-1 rounded-full text-xs font-semibold mb-4 uppercase tracking-wider">
+                  <Shield className="w-3.5 h-3.5" />
+                  Life Insurance
+                </div>
+                <h2 className="text-xl lg:text-[1.85rem] font-bold text-white mb-2 leading-tight max-w-lg">
+                  Protect your family with<br />100% pure life insurance
+                </h2>
+                <p className="text-sm lg:text-base text-white/60 mb-5">Not mixed with any returns or jargons</p>
+                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold border border-white/10">
+                  <span className="bg-gold/20 rounded-full p-0.5 flex items-center justify-center"><CheckCircle className="w-3.5 h-3.5 text-gold" /></span>
                   Coverage from ₹25 L to ₹100 Cr
                 </div>
               </div>
-              <Shield className="absolute -bottom-[2.5rem] -right-[2rem] w-[40vw] h-[40vw] sm:w-[15rem] sm:h-[15rem] lg:w-[16rem] lg:h-[16rem] text-primary/5 group-hover:scale-105 transition-transform duration-700 pointer-events-none" strokeWidth={0.5} />
-              <div className="mt-20 z-10 pt-8">
-                <div className="w-10 h-10 rounded-full border border-navy/20 flex items-center justify-center text-navy group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
-                  <ArrowRight className="w-5 h-5 opacity-70 group-hover:opacity-100" />
+              <img src="/family-.png" alt="Family Illustration" className="absolute -bottom-[2rem] -right-[1.5rem] w-[26vw] h-[26vw] sm:w-[12rem] sm:h-[12rem] lg:w-[18rem] lg:h-[18rem] opacity-30 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700 pointer-events-none object-contain drop-shadow-2xl" />
+              <div className="mt-auto z-10 pt-6">
+                <div className="arrow-btn w-10 h-10 rounded-full border border-white/25 flex items-center justify-center text-white">
+                  <ArrowRight className="w-5 h-5" />
                 </div>
               </div>
             </Link>
 
-            {/* Right Side Cards (Spans 8 columns) */}
-            <div className="col-span-1 lg:col-span-8 flex flex-col gap-4 lg:gap-6">
-
-              {/* Top Row */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 flex-1">
-                {/* Car Insurance */}
-                <Link to="/get-quote?type=motor" className="bg-card rounded-[2rem] p-6 lg:p-7 flex flex-col justify-between relative group hover:shadow-xl hover:shadow-navy/10 hover:-translate-y-1 transition-all duration-300 border border-white/60 hover:border-primary/15 overflow-hidden">
-                  <div className="z-10 relative">
-                    <h3 className="text-xl lg:text-2xl font-bold text-navy mb-2">Car insurance</h3>
-                    <p className="text-sm text-muted-foreground mb-4"><span className="text-gold-dark font-semibold">Renew your car insurance</span> with<br />zero commission</p>
-                    <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-2.5 py-1 rounded-full text-xs font-semibold">
-                      <span className="bg-background rounded-full p-0.5 w-4 h-4 flex items-center justify-center"><CheckCircle className="w-3 h-3" /></span>
-                      Starting at just ₹2094*
-                    </div>
-                  </div>
-                  <Car className="absolute -bottom-[1rem] -right-[1rem] w-[25vw] h-[25vw] md:w-[8rem] md:h-[8rem] text-navy/5 group-hover:text-navy/10 group-hover:-translate-x-2 transition-all duration-700 pointer-events-none" strokeWidth={1} />
-                  <div className="mt-16 z-10">
-                    <div className="w-8 h-8 rounded-full border border-navy/20 flex items-center justify-center text-navy group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
-                      <ArrowRight className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-                    </div>
-                  </div>
-                </Link>
-
-                {/* Brand New Car */}
-                <Link to="/get-quote?type=motor" className="bg-card rounded-[2rem] p-6 lg:p-7 flex flex-col justify-between relative group hover:shadow-xl hover:shadow-navy/10 hover:-translate-y-1 transition-all duration-300 border border-white/60 hover:border-primary/15 overflow-hidden">
-                  <div className="z-10 relative">
-                    <h3 className="text-xl lg:text-2xl font-bold text-navy mb-2 leading-tight">Insuring a brand<br />new car?</h3>
-                    <p className="text-sm text-muted-foreground mb-4"><span className="text-gold-dark font-semibold">Save up to ₹36,000</span> by insuring your<br />brand new car with us</p>
-                  </div>
-                  <Car className="absolute -bottom-[1rem] -right-[1rem] w-[25vw] h-[25vw] md:w-[8rem] md:h-[8rem] text-gold/10 group-hover:text-gold/20 group-hover:-translate-x-2 transition-all duration-700 pointer-events-none" strokeWidth={1} />
-                  <div className="mt-16 z-10">
-                    <div className="w-8 h-8 rounded-full border border-navy/20 flex items-center justify-center text-navy group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
-                      <ArrowRight className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-                    </div>
-                  </div>
-                </Link>
-
-                {/* Bike Insurance */}
-                <Link to="/get-quote?type=motor" className="bg-card rounded-[2rem] p-6 lg:p-7 flex flex-col justify-between relative group hover:shadow-xl hover:shadow-navy/10 hover:-translate-y-1 transition-all duration-300 border border-white/60 hover:border-primary/15 overflow-hidden">
-                  <div className="z-10 relative">
-                    <h3 className="text-xl lg:text-2xl font-bold text-navy mb-2">Bike insurance</h3>
-                    <p className="text-sm text-muted-foreground mb-4">Insure your bike or scooter in<br />just 1 minute</p>
-                  </div>
-                  <Bike className="absolute -bottom-[1rem] -right-[1rem] w-[22vw] h-[22vw] md:w-[7rem] md:h-[7rem] text-navy/5 group-hover:text-navy/10 group-hover:-translate-x-2 transition-all duration-700 pointer-events-none" strokeWidth={1} />
-                  <div className="mt-16 z-10">
-                    <div className="w-8 h-8 rounded-full border border-navy/20 flex items-center justify-center text-navy group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
-                      <ArrowRight className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-                    </div>
-                  </div>
-                </Link>
+            {/* Health Insurance — tall side card */}
+            <Link to="/get-quote?type=health" className="col-span-1 lg:col-span-4 hero-card rounded-3xl p-6 lg:p-7 flex flex-col justify-between relative group min-h-[200px] lg:min-h-[220px]">
+              <div className="z-10 relative">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <h3 className="text-2xl lg:text-[1.75rem] font-bold text-navy">Health insurance</h3>
+                  <span className="shimmer-badge inline-flex items-center gap-1 bg-gold/20 text-gold-dark px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider">Popular</span>
+                </div>
+                <p className="text-sm lg:text-base text-muted-foreground mb-4"><span className="text-gold-dark font-semibold">100% hospital bill payments</span> from syringes to surgeries.<br />No surprises.</p>
+                <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-semibold">
+                  <span className="bg-background rounded-full p-0.5 flex items-center justify-center"><CheckCircle className="w-4 h-4" /></span>
+                  From ₹600/month
+                </div>
               </div>
-
-              {/* Bottom Row */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 flex-1">
-                {/* Health Insurance (Spans 2 columns) */}
-                <Link to="/get-quote?type=health" className="md:col-span-2 bg-card rounded-[2rem] p-6 lg:p-8 flex flex-col justify-between relative group hover:shadow-xl hover:shadow-navy/10 hover:-translate-y-1 transition-all duration-300 border border-white/60 hover:border-primary/15 overflow-hidden">
-                  <div className="z-10 relative max-w-sm">
-                    <h3 className="text-2xl lg:text-[1.75rem] font-bold text-navy mb-3">Health insurance</h3>
-                    <p className="text-sm lg:text-base text-muted-foreground mb-4"><span className="text-gold-dark font-semibold">100% hospital bill payments</span> from syringes to surgeries.<br />No surprises.</p>
-                    <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-sm font-semibold">
-                      <span className="bg-background rounded-full p-0.5 flex items-center justify-center"><CheckCircle className="w-4 h-4" /></span>
-                      From ₹600/month
-                    </div>
-                  </div>
-                  <Heart className="absolute -bottom-[2rem] right-0 w-[35vw] h-[35vw] md:w-[11rem] md:h-[11rem] text-destructive/5 group-hover:text-destructive/10 group-hover:scale-105 transition-all duration-700 pointer-events-none" strokeWidth={1} />
-                  <div className="mt-16 z-10">
-                    <div className="w-8 h-8 rounded-full border border-navy/20 flex items-center justify-center text-navy group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
-                      <ArrowRight className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-                    </div>
-                  </div>
-                </Link>
-
-                {/* Travel Insurance */}
-                <Link to="/" className="bg-card rounded-[2rem] p-6 lg:p-8 flex flex-col justify-between relative group hover:shadow-xl hover:shadow-navy/10 hover:-translate-y-1 transition-all duration-300 border border-white/60 hover:border-primary/15 overflow-hidden">
-                  <div className="z-10 relative">
-                    <h3 className="text-xl lg:text-[1.75rem] font-bold text-navy mb-3">Traveling soon?</h3>
-                    <p className="text-sm text-muted-foreground mb-4"><span className="text-gold-dark font-semibold">Travel insurance</span> with emergency<br />medical coverage in 150+ countries</p>
-                  </div>
-                  <Plane className="absolute -bottom-[1rem] -right-[1rem] w-[25vw] h-[25vw] md:w-[8rem] md:h-[8rem] text-navy/5 group-hover:text-navy/10 group-hover:-translate-y-2 group-hover:translate-x-2 transition-all duration-700 pointer-events-none" strokeWidth={1} />
-                  <div className="mt-16 z-10">
-                    <div className="w-8 h-8 rounded-full border border-navy/20 flex items-center justify-center text-navy group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all">
-                      <ArrowRight className="w-4 h-4 opacity-70 group-hover:opacity-100" />
-                    </div>
-                  </div>
-                </Link>
+              <Heart className="absolute -bottom-[2rem] right-0 w-[35vw] h-[35vw] md:w-[10rem] md:h-[10rem] text-destructive/[0.05] group-hover:text-destructive/[0.10] group-hover:scale-105 transition-all duration-700 pointer-events-none" strokeWidth={1} />
+              <div className="mt-auto z-10 pt-6">
+                <div className="arrow-btn w-9 h-9 rounded-full border border-navy/20 flex items-center justify-center text-navy">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
-
-            </div>
+            </Link>
           </div>
 
-          <div className="text-center mt-6 text-xs text-muted-foreground font-medium">
+          {/* ── Row 2: Car + Bike + Travel (equal thirds) ── */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
+
+            {/* Car Insurance */}
+            <Link to="/get-quote?type=motor" className="hero-card rounded-3xl p-5 lg:p-6 flex flex-col justify-between relative group min-h-[140px] lg:min-h-[150px]">
+              <div className="z-10 relative">
+                <h3 className="text-xl lg:text-2xl font-bold text-navy mb-2">Car insurance</h3>
+                <p className="text-sm text-muted-foreground mb-4"><span className="text-gold-dark font-semibold">Renew your car insurance</span> with<br />zero commission</p>
+                <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-2.5 py-1 rounded-full text-xs font-semibold">
+                  <span className="bg-background rounded-full p-0.5 w-4 h-4 flex items-center justify-center"><CheckCircle className="w-3 h-3" /></span>
+                  Starting at just ₹2094*
+                </div>
+              </div>
+              <Car className="absolute -bottom-[1rem] -right-[1rem] w-[25vw] h-[25vw] md:w-[8rem] md:h-[8rem] text-navy/[0.04] group-hover:text-navy/[0.08] group-hover:-translate-x-2 transition-all duration-700 pointer-events-none" strokeWidth={1} />
+              <div className="mt-auto z-10 pt-6">
+                <div className="arrow-btn w-9 h-9 rounded-full border border-navy/20 flex items-center justify-center text-navy">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Bike Insurance */}
+            <Link to="/get-quote?type=motor" className="hero-card rounded-3xl p-5 lg:p-6 flex flex-col justify-between relative group min-h-[140px] lg:min-h-[150px]">
+              <div className="z-10 relative">
+                <h3 className="text-xl lg:text-2xl font-bold text-navy mb-2">Bike insurance</h3>
+                <p className="text-sm text-muted-foreground mb-4">Insure your bike or scooter in<br />just 1 minute</p>
+              </div>
+              <Bike className="absolute -bottom-[1rem] -right-[1rem] w-[22vw] h-[22vw] md:w-[7rem] md:h-[7rem] text-navy/[0.04] group-hover:text-navy/[0.08] group-hover:-translate-x-2 transition-all duration-700 pointer-events-none" strokeWidth={1} />
+              <div className="mt-auto z-10 pt-6">
+                <div className="arrow-btn w-9 h-9 rounded-full border border-navy/20 flex items-center justify-center text-navy">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Travel Insurance */}
+            <Link to="/" className="hero-card rounded-3xl p-5 lg:p-6 flex flex-col justify-between relative group min-h-[140px] lg:min-h-[150px]">
+              <div className="z-10 relative">
+                <h3 className="text-xl lg:text-[1.75rem] font-bold text-navy mb-3">Traveling soon?</h3>
+                <p className="text-sm text-muted-foreground mb-4"><span className="text-gold-dark font-semibold">Travel insurance</span> with emergency<br />medical coverage in 150+ countries</p>
+              </div>
+              <Plane className="absolute -bottom-[1rem] -right-[1rem] w-[25vw] h-[25vw] md:w-[8rem] md:h-[8rem] text-navy/[0.04] group-hover:text-navy/[0.08] group-hover:-translate-y-2 group-hover:translate-x-2 transition-all duration-700 pointer-events-none" strokeWidth={1} />
+              <div className="mt-auto z-10 pt-6">
+                <div className="arrow-btn w-9 h-9 rounded-full border border-navy/20 flex items-center justify-center text-navy">
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          <div className="text-center mt-7 text-xs text-muted-foreground font-medium">
             UID: 6484 | ARN: L0110 | T&C apply
           </div>
         </div>
       </section>
 
-      {/* Products */}
-      <section className="py-16 bg-muted">
+      {/* ═══════════════════ Products ═══════════════════ */}
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy mb-3">Insurance Products We Offer</h2>
-            <p className="text-muted-foreground">Explore Life, Health, and Motor Insurance plans from leading insurers</p>
+          <div className="text-center mb-14">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy mb-3">Insurance Products We Offer</h2>
+            <p className="text-muted-foreground max-w-lg mx-auto">Explore Life, Health, and Motor Insurance plans from leading insurers</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Life Insurance Card */}
-            <Card className="border-2 border-navy/10 hover:border-gold/50 transition-all group shadow-navy overflow-hidden">
-              <div className="gradient-hero p-6">
-                <Shield className="w-10 h-10 text-gold mb-3" />
-                <h3 className="text-2xl font-bold text-primary-foreground">Life Insurance</h3>
-                <p className="text-primary-foreground/70 text-sm mt-2">Secure your family's future</p>
-              </div>
-              <CardContent className="p-6">
-                <ul className="space-y-2 mb-6">
+            <div className="accent-strip-card rounded-2xl group">
+              <div className="p-7">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                  <Shield className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-navy mb-1.5">Life Insurance</h3>
+                <p className="text-sm text-muted-foreground mb-5">Secure your family's future</p>
+                <ul className="space-y-2.5 mb-7">
                   {["Term Life Insurance", "Whole Life Plans", "ULIP Policies", "Endowment Plans"].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-foreground/80">
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-foreground/80">
                       <CheckCircle className="w-4 h-4 text-gold flex-shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
                 <Link to="/get-quote?type=life">
-                  <Button className="w-full bg-navy text-primary-foreground hover:bg-navy-light">
+                  <Button className="w-full bg-navy text-primary-foreground hover:bg-navy-light group-hover:shadow-lg transition-shadow">
                     Explore Life Plans <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Health Insurance Card */}
-            <Card className="border-2 border-navy/10 hover:border-gold/50 transition-all group shadow-navy overflow-hidden">
-              <div className="gradient-hero p-6">
-                <Heart className="w-10 h-10 text-gold mb-3" />
-                <h3 className="text-2xl font-bold text-primary-foreground">Health Insurance</h3>
-                <p className="text-primary-foreground/70 text-sm mt-2">Complete medical protection</p>
-              </div>
-              <CardContent className="p-6">
-                <ul className="space-y-2 mb-6">
+            <div className="accent-strip-card rounded-2xl group">
+              <div className="p-7">
+                <div className="w-12 h-12 rounded-xl bg-destructive/10 flex items-center justify-center mb-5">
+                  <Heart className="w-6 h-6 text-destructive" />
+                </div>
+                <h3 className="text-xl font-bold text-navy mb-1.5">Health Insurance</h3>
+                <p className="text-sm text-muted-foreground mb-5">Complete medical protection</p>
+                <ul className="space-y-2.5 mb-7">
                   {["Individual Health Plans", "Family Floater Plans", "Critical Illness Cover", "Top-Up Plans"].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-foreground/80">
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-foreground/80">
                       <CheckCircle className="w-4 h-4 text-gold flex-shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
                 <Link to="/get-quote?type=health">
-                  <Button className="w-full bg-navy text-primary-foreground hover:bg-navy-light">
+                  <Button className="w-full bg-navy text-primary-foreground hover:bg-navy-light group-hover:shadow-lg transition-shadow">
                     Explore Health Plans <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Motor Insurance Card */}
-            <Card className="border-2 border-navy/10 hover:border-gold/50 transition-all group shadow-navy overflow-hidden">
-              <div className="gradient-hero p-6">
-                <Car className="w-10 h-10 text-gold mb-3" />
-                <h3 className="text-2xl font-bold text-primary-foreground">Motor Insurance</h3>
-                <p className="text-primary-foreground/70 text-sm mt-2">Drive with confidence</p>
-              </div>
-              <CardContent className="p-6">
-                <ul className="space-y-2 mb-6">
+            <div className="accent-strip-card rounded-2xl group">
+              <div className="p-7">
+                <div className="w-12 h-12 rounded-xl bg-gold/15 flex items-center justify-center mb-5">
+                  <Car className="w-6 h-6 text-gold-dark" />
+                </div>
+                <h3 className="text-xl font-bold text-navy mb-1.5">Motor Insurance</h3>
+                <p className="text-sm text-muted-foreground mb-5">Drive with confidence</p>
+                <ul className="space-y-2.5 mb-7">
                   {["Private Car – Comprehensive", "Private Car – Third Party", "Two Wheeler – Comprehensive", "Two Wheeler – Third Party"].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-foreground/80">
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-foreground/80">
                       <CheckCircle className="w-4 h-4 text-gold flex-shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
                 <Link to="/get-quote?type=motor">
-                  <Button className="w-full bg-navy text-primary-foreground hover:bg-navy-light">
+                  <Button className="w-full bg-navy text-primary-foreground hover:bg-navy-light group-hover:shadow-lg transition-shadow">
                     Explore Motor Plans <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
                 </Link>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="py-16 bg-background">
+      {/* ═══════════════════ Why Choose Us ═══════════════════ */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-navy mb-3">Why Choose Sankalp?</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy mb-3">Why Choose Sankalp?</h2>
             <p className="text-muted-foreground">We work for you, not the insurance company</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-7 max-w-4xl mx-auto">
             {whyUs.map((item) => (
-              <Card key={item.title} className="text-center p-6 border-navy/10 hover:border-gold/40 transition-all">
-                <div className="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <item.icon className="w-7 h-7 text-gold-dark" />
+              <Card key={item.title} className="text-center p-7 border-navy/10 hover:border-gold/40 transition-all group bg-card/80 backdrop-blur-sm">
+                <div className="floating-icon w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                  <item.icon className="w-8 h-8 text-gold-dark" />
                 </div>
-                <h3 className="font-bold text-navy mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
+                <h3 className="font-bold text-navy mb-2 text-lg">{item.title}</h3>
+                <div className="w-0 group-hover:w-12 h-0.5 bg-gradient-to-r from-primary to-gold mx-auto mb-3 transition-all duration-500" />
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Customer Speaks */}
-      <section className="py-16 bg-muted">
+      {/* ═══════════════════ Customer Speaks ═══════════════════ */}
+      <section className="py-20 bg-muted">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-navy mb-3">Customer Speaks</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy mb-3">Customer Speaks</h2>
             <p className="text-muted-foreground">Hear what our satisfied policyholders have to say</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-7">
             {reviews.map((review, idx) => (
-              <Card key={idx} className="p-6 border-navy/10 hover:border-gold/40 transition-all flex flex-col justify-between">
+              <div key={idx} className="testimonial-card rounded-2xl p-7 flex flex-col justify-between relative">
+                {/* Decorative quote */}
+                <Quote className="absolute top-4 right-5 w-8 h-8 text-gold/15 pointer-events-none" strokeWidth={1.5} />
                 <div>
                   <div className="flex gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -339,17 +334,17 @@ export default function HomePage() {
                   <p className="font-bold text-navy text-sm">{review.name}</p>
                   <p className="text-xs text-muted-foreground">{review.role}</p>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 bg-background">
+      {/* ═══════════════════ FAQ Section ═══════════════════ */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-navy mb-3">Frequently Asked Questions About Insurance</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy mb-3">Frequently Asked Questions About Insurance</h2>
             <p className="text-muted-foreground">Know why did they choose Sankalp</p>
           </div>
 
@@ -394,13 +389,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="py-12 gradient-hero">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold text-primary-foreground mb-3">Ready to Secure Your Future?</h2>
-          <p className="text-primary-foreground/70 mb-6">Get personalised insurance quotes in minutes. No spam. No obligation.</p>
+      {/* ═══════════════════ CTA Banner ═══════════════════ */}
+      <section className="py-14 cta-animated relative overflow-hidden">
+        {/* Subtle decorative circles */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-white/[0.03]" />
+          <div className="absolute -bottom-16 -right-16 w-48 h-48 rounded-full bg-white/[0.04]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-white/[0.015]" />
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-2xl lg:text-3xl font-bold text-primary-foreground mb-3">Ready to Secure Your Future?</h2>
+          <p className="text-primary-foreground/70 mb-7 max-w-md mx-auto">Get personalised insurance quotes in minutes. No spam. No obligation.</p>
           <Link to="/get-quote">
-            <Button size="lg" className="gradient-gold text-navy font-bold border-0 px-10">
+            <Button size="lg" className="gradient-gold text-navy font-bold border-0 px-10 shadow-gold hover:shadow-xl hover:scale-105 transition-all duration-300">
               Start Your Free Quote <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
